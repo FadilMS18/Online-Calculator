@@ -1,0 +1,95 @@
+.child3-container{ /* delete container and number container class */
+    display:flex;
+    gap:20px;
+    
+}
+#delete-container{ /* Delete and Clear button container */
+    flex:0.5;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+#number-container{ /* Parent Container for all number container 1-9 and 0 */
+    flex-direction:column;
+    flex:5;
+    font-weight:bold;
+}
+
+/* Number container and zero number class */
+.child4-container{
+    flex:1;
+
+}
+#one9Num{ /* 1-9 button container */
+    flex:5;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    gap:10px;
+}
+#zeroNum{ /* 0 button container */
+    flex:1;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+}
+
+/* Delete and clear css Style */
+.delete-clear{
+    background-color:lightcyan;
+    flex:1;
+    border-radius:10px;
+    padding:10px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.2s;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+.delete-clear:hover{
+    transform:scale(1.1)
+}
+.delete-clear:active{
+    transform:scale(0.9)
+}
+
+
+/* Button 1 - 9 */
+.oneToNine{
+    background-color:lightcyan;
+    margin:0;
+    padding:35px 0px ;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.1s;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.oneToNine:hover{
+    transform:scale(1.05)
+}
+.oneToNine:active{
+    transform:scale(0.95)
+}
+
+/* Left operator button and 0. */
+.zeroNume{
+    background-color:lightcyan;
+    display:flex;
+    padding:10px;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    transition:0.1s;
+    border-radius:10px;
+    font-weight:bold;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+}
+.zeroNume:hover{
+    transform:scale(1.05)
+}
+.zeroNume:active{
+    transform:scale(0.95)
+}

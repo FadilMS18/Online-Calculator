@@ -1,0 +1,18 @@
+.child2-container{ /* Left and right operator container class */
+    display:flex;
+    flex-direction :column;
+    gap:20px
+
+}
+#left-operator-container{ /* Parent container for delete container and number container */
+    flex:3;
+    margin:0;
+}
+#operator-container{ /* Right Operator container */
+    flex:1;
+    display:grid;
+    grid-template-columns: 1fr ;
+    margin:0
+}
+
+
