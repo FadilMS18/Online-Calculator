@@ -9,8 +9,7 @@ body{
     border:solid 2px black;
     padding:30px;
     gap:30px;
-    width:500px;
-    height:700px;
+    width:450px;
     margin-left:auto;
     margin-right:auto;
 }
@@ -21,12 +20,32 @@ body{
     display:flex;
 }
 #display-container{ /* Container for top display  */
-    gap:0px
+    border:none;
+    padding:0px;
+    gap:0px;
+    border-radius:10px;
 }
+.display-style{
+    background-color:lightcyan;
+    border:black 2px solid;
+    flex:1;
+    height:71px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px 5px rgba(0, 0, 0, 0.105);
+    padding:10px 10px 20px 10px;
+    display:flex;
+}
+#parBig{  
+    margin : auto 0  0 20px;
+    font-size:25px;
+    
+}
+
 #bottom-container{ /* bottom container that is parent for left & right operator */
     gap:20px;
     background-color: rgb(128, 255, 255);
     padding:40px;
     display:flex;
+    border-radius:10px
 }
 

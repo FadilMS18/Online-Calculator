@@ -17,14 +17,8 @@ const zeroNum = document.querySelector("#zeroNum") // Child4
 
 body.style.backgroundColor = "bisque"
 
-let makeADiv = document.createElement("div")
-makeADiv.style.cssText = `
-    background-color:lightcyan;
-    border:black 2px solid;
-    flex:1;
-    height:71px;
-    border-radius:10px;
-`
+let makeADiv = document.createElement("div") // Making display section
+makeADiv.classList.add("display-style")
 displayContainer.appendChild(makeADiv)
 
 for(let i = 1; i < 3; i++){ // Delete And Clear Button Making
@@ -39,6 +33,7 @@ for(let i = 1; i < 3; i++){ // Delete And Clear Button Making
 for(let i = 9; i > 0; i--){ // 1 - 9 Number Button
     let div = document.createElement("div")
     div.classList.add("oneToNine")
+    div.setAttribute("data-value", `${i}`)
     div.textContent = `${i}`
     one9Num.appendChild(div)
 }
@@ -46,15 +41,18 @@ for(let i = 9; i > 0; i--){ // 1 - 9 Number Button
 for(let i = 0; i < 2; i++){ // Zero and . Button
     let div = document.createElement("div")
     div.classList.add("zeroNume")
+    div.classList.add("zeroNom")
     if(i === 0){
         div.textContent = `${i}`
-    } else{ div.textContent = "." }
+        div.setAttribute("data-value" ,"0")
+    } else{ div.textContent = "." ; div.setAttribute("data-value", ".") }
     zeroNum.appendChild(div)
 }
 
 for(let i = 0; i < operator.length; i++){
     let div = document.createElement("div")
     div.classList.add("zeroNume")
+    div.setAttribute("data-value", `${operator[i]}`)
     div.textContent = operator[i]
     rightOperator.appendChild(div)
 }
