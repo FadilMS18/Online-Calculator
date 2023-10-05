@@ -1,4 +1,5 @@
 const numBut = Array.from(document.querySelectorAll(".oneToNine, .zeroNom "))
+
 const opBut = Array.from(rightOperator.querySelectorAll(".zeroNume"))
 const opButFilter = opBut.filter(but =>{return but.getAttribute("data-value") !== "="})
 
@@ -9,6 +10,11 @@ const display = document.querySelector(".display-style")
 const clear = document.querySelectorAll(".delete-clear")[1]
 clear.addEventListener("click", backToNormal)
 
+const deleteButton = document.querySelector(".delete-clear")
+// deleteButton.addEventListener("click", ()=>{
+//     return content10 = content10.split("").slice(0, -1).join("")
+// })
+
 
 for(let i = 0; i < 1; i++){
         let par = document.createElement("h4")
@@ -17,8 +23,10 @@ for(let i = 0; i < 1; i++){
         display.appendChild(par)
 }
 
-    
-    
+
+
+
+
 
 const numDis = document.querySelector("#parBig")
 
@@ -30,6 +38,10 @@ let secondNum = ""
 let operatorValue = ""
 let res = null
 let res2 = null
+let content1 =""
+let content2 =""
+let cont1Delete;
+
 
 opButFilter.forEach(but =>{
     but.addEventListener("click", ()=>{
@@ -39,40 +51,58 @@ opButFilter.forEach(but =>{
     })
 })
 
+
+deleteButton.addEventListener("click", ()=>{
+    if(!operatorValue || !res){
+        firstNum = firstNum.slice(0, -1)
+        content1 = content1.slice(0, -1) 
+        
+        res = parseFloat(content1)
+        numDis.textContent = content1
+        console.log(content1)
+    }
+    if(operatorValue && res){
+        secondNum = secondNum.slice(0, -1)
+        content2 = content2.slice(0,-1)
+        res2 = parseFloat(content2)
+        numDis.textContent = content2
+        console.log(content2)
+    }
+})
+
+
+function deleteCont1(){
+    cont1Delete = true
+}
+
+
 numBut.forEach((but) => {
+    
     
     but.addEventListener("click", ()=> {
         let nom = but.getAttribute("data-value") 
+
+        if(operatorValue && nom === ".") return
         if(!operatorValue || !res){
-            content1 = firstNum += nom
-            res = parseFloat(content1) 
+            if(content1.includes(".") && nom === ".") return
+            content1 = firstNum += nom 
+            
+            res = parseFloat(content1)
             numDis.textContent = content1
             console.log(content1)
         }
         if(operatorValue && res){
+            if(content2.includes(".") && nom === ".") return
             content2 = secondNum += nom
-            res2 = parseFloat(content2) 
+            res2 = parseFloat(content2)
             numDis.textContent = content2
             console.log(content2)
         }
-        // if(!operatorValue || !res){
-        //     res = parseFloat(firstNum += nom) 
-        //     numDis.textContent = res
-        //     console.log(res)
-        // }
-        // if(operatorValue && res){
-        //     res2 = parseFloat(secondNum += nom) 
-        //     numDis.textContent = res2
-        //     console.log(res2)
-        // }
         
-        
-
-
     })      
 })
 
-function backToNormal(){
+function backToNormal(){ // if We use Clear button
     firstNum = ""
     secondNum = ""
     operatorValue = ""
@@ -89,7 +119,7 @@ result.addEventListener("click", ()=>{
         secondNum = ""
         operatorValue = null
     }else{
-        final = operate(res, res2, operatorValue)
+        final = Number(operate(res, res2, operatorValue).toFixed(3))
         numDis.textContent = final
         console.log(final)
         firstNum = final
@@ -102,7 +132,7 @@ result.addEventListener("click", ()=>{
 })
 
 function operate(a, b, c){
-    // if(!b) return
+    if(!b) return
     switch(c){
         case("+"):{
             return a + b
