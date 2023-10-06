@@ -87,7 +87,7 @@ numBut.forEach((but) => {
     but.addEventListener("click", ()=> {
         let nom = but.getAttribute("data-value") 
 
-        if(operatorValue && nom === ".") return
+        
 
         if(operatorValue && res === 0){
             content1 = "0"
