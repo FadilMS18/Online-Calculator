@@ -93,6 +93,10 @@ numBut.forEach((but) => {
         }
         if(operatorValue && res){
             if(content2.includes(".") && nom === ".") return
+            if(operatorValue === "/" && nom === "0"){
+                alert("Hey You cannot divide by zero, You're gonna break the program :v, Please Choose another number")
+                return
+            } 
             content2 = secondNum += nom
             res2 = parseFloat(content2)
             numDis.textContent = content2
