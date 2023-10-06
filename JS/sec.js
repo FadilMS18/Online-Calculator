@@ -16,12 +16,12 @@ const deleteButton = document.querySelector(".delete-clear")
 // })
 
 
-for(let i = 0; i < 1; i++){
-        let par = document.createElement("h4")
-        par.textContent ="Percobaan"
-        par.setAttribute("id", "parBig")
-        display.appendChild(par)
-}
+
+let par = document.createElement("h4")
+// par.textContent = "0"
+par.setAttribute("id", "parBig")
+display.appendChild(par)
+
 
 
 
@@ -29,6 +29,7 @@ for(let i = 0; i < 1; i++){
 
 
 const numDis = document.querySelector("#parBig")
+numDis.textContent = "0"
 
 
 console.log(numBut)
@@ -45,6 +46,9 @@ let cont1Delete;
 
 opButFilter.forEach(but =>{
     but.addEventListener("click", ()=>{
+        if(!res){
+            res = 0
+        }
         operatorValue = but.getAttribute("data-value")
         numDis.textContent += ` ${operatorValue}`
         console.log(operatorValue)
@@ -61,6 +65,10 @@ deleteButton.addEventListener("click", ()=>{
         numDis.textContent = content1
         console.log(content1)
     }
+    if(res && operatorValue && !res2){
+        operatorValue = null
+        numDis.textContent = content1
+    }
     if(operatorValue && res){
         secondNum = secondNum.slice(0, -1)
         content2 = content2.slice(0,-1)
@@ -68,12 +76,9 @@ deleteButton.addEventListener("click", ()=>{
         numDis.textContent = content2
         console.log(content2)
     }
+
 })
 
-
-function deleteCont1(){
-    cont1Delete = true
-}
 
 
 numBut.forEach((but) => {
@@ -83,15 +88,24 @@ numBut.forEach((but) => {
         let nom = but.getAttribute("data-value") 
 
         if(operatorValue && nom === ".") return
-        if(!operatorValue || !res){
+
+        if(operatorValue && res === 0){
+            content1 = "0"
+            res = parseFloat(content1)
+            numDis.textContent = content1
+            console.log(content1)
+        } 
+        else if(!operatorValue || !res ){
             if(content1.includes(".") && nom === ".") return
+            
             content1 = firstNum += nom 
             
             res = parseFloat(content1)
             numDis.textContent = content1
             console.log(content1)
         }
-        if(operatorValue && res){
+
+        if(operatorValue && res || operatorValue && res === 0){
             if(content2.includes(".") && nom === ".") return
             if(operatorValue === "/" && nom === "0"){
                 alert("Hey You cannot divide by zero, You're gonna break the program :v, Please Choose another number")
@@ -111,7 +125,7 @@ function backToNormal(){ // if We use Clear button
     secondNum = ""
     operatorValue = ""
     res = null
-    numDis.textContent = "Reset"
+    numDis.textContent = "0"
     alert("calculator Reset")
 }
 
