@@ -15,7 +15,6 @@ const one9Num = document.querySelector("#one9Num") // Child4
 const zeroNum = document.querySelector("#zeroNum") // Child4
 
 
-body.style.backgroundColor = "bisque"
 
 let makeADiv = document.createElement("div") // Making display section
 makeADiv.classList.add("display-style")
